@@ -11,7 +11,7 @@ const router = Router();
 
 // listar admin
 router.get(
-  "/admin/orders",
+  ["/admin/orders","/api/admin/orders"],
   authMiddleware,
   adminOnly,
   ah(async (req, res) => {
@@ -36,7 +36,7 @@ router.get(
 
 // verificar yape
 router.post(
-  "/orders/:id/verify-yape",
+  ["/orders/:id/verify-yape","/api/orders/:id/verify-yape"],
   authMiddleware,
   adminOnly,
   ah(async (req: AuthedRequest, res) => {
@@ -67,7 +67,7 @@ router.post(
 
 // update shipping
 router.post(
-  "/admin/orders/:id/shipping",
+  ["/admin/orders/:id/shipping","/api/admin/orders/:id/shipping"],
   authMiddleware,
   adminOnly,
   ah(async (req, res) => {

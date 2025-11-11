@@ -6,7 +6,7 @@ import { ah } from "../middlewares/asyncHandler";
 const router = Router();
 
 router.get(
-  "/products",
+  ["/products","/api/products"],
   ah(async (req, res) => {
     const { active, oferta, offer, limit } = req.query as any;
     const parseBool = (v?: string) =>

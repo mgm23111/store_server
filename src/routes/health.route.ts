@@ -4,7 +4,7 @@ import { env } from "../config/env";
 
 const router = Router();
 
-router.get("/health", (req, res) => {
+router.get(["/health", "/api/health"], (req, res) => {
   const k = env.CULQI_SECRET_KEY;
   res.json({
     culqiKeyLoaded: !!k,

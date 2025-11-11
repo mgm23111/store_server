@@ -14,7 +14,7 @@ const router = Router();
 
 // validar carrito
 router.post(
-  "/cart/validate",
+  ["/cart/validate","/api/cart/validate"],
   authMiddleware,
   ah(async (req: AuthedRequest, res) => {
     const { items } = (req.body ?? {}) as { items?: any[] };
@@ -43,7 +43,7 @@ router.post(
 
 // cobro Culqi
 router.post(
-  "/culqi/charge",
+  ["/culqi/charge","/api/culqi/charge"],
   authMiddleware,
   ah(async (req: AuthedRequest, res) => {
     const { uid, email: authEmail } = req.user!;
@@ -162,7 +162,7 @@ const shippingAddress =
 
 // listar órdenes del usuario
 router.get(
-  "/orders",
+  ["/orders","/api/orders"],
   authMiddleware,
   ah(async (req: AuthedRequest, res) => {
     const uid = req.user!.uid;
@@ -205,7 +205,7 @@ router.get(
 
 // detalle
 router.get(
-  "/orders/:id",
+  ["/orders/:id","/api/orders/:id"],
   authMiddleware,
   ah(async (req: AuthedRequest, res) => {
     const snap = await adminDb.collection("orders").doc(req.params.id).get();
@@ -217,7 +217,7 @@ router.get(
 );
 // crear orden con pago Yape (pendiente de verificación)
  router.post(
-  "/orders/yape",
+  ["/orders/yape","/api/orders/yape"],
   authMiddleware,
   ah(async (req: AuthedRequest, res) => {
     const { uid, email: authEmail } = req.user!;
